@@ -1,0 +1,286 @@
+/* index.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #121212;
+  --color-text: #E1E1E1;
+  --color-text-secondary: #A8A8A8;
+  --color-accent: #82aaff;
+  --color-recording: #ff453a; /* Red for recording */
+  --color-border: rgba(255, 255, 255, 0.12);
+  --font-primary: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.app-container {
+  padding: 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recording-interface {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #1E1E1E;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex; /* Added for centering children */
+  flex-direction: column; /* Added */
+  align-items: center; /* Added */
+}
+
+.status-indicator {
+  margin-bottom: 20px; /* Increased margin */
+}
+
+.status-text {
+  font-size: 1em;
+  color: var(--color-text-secondary);
+}
+
+.recording-controls {
+  margin-bottom: 20px;
+  /* The button itself will handle its content centering */
+}
+
+.record-button {
+  position: relative; /* For positioning the waves */
+  width: 100px;  /* Increased size */
+  height: 100px; /* Increased size */
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-accent); /* Default blue */
+  color: white;
+  cursor: pointer;
+  display: flex; /* Use flexbox on the button itself */
+  flex-direction: column; /* Stack icon and text vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center;   /* Center horizontally */
+  transition: background-color 0.3s ease;
+  padding: 10px; /* Add some padding if needed */
+}
+
+.record-button:hover {
+  background-color: #6c8edf; /* Darker blue on hover */
+}
+
+/* Style for when recording */
+.record-button.recording {
+  background-color: var(--color-recording); /* Red when recording */
+}
+.record-button.recording:hover {
+  background-color: #e0342a; /* Darker red on hover when recording */
+}
+
+
+/* This wrapper now handles the icon and text */
+.record-button-content-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack icon above text */
+  align-items: center;   /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: center;    /* Ensure text itself is centered if it wraps */
+}
+
+.record-button #micIcon { /* Target icon specifically */
+  font-size: 2.5em; /* Adjust icon size */
+  margin-bottom: 8px; /* Space between icon and text */
+}
+
+.record-text {
+  display: block; /* Already block, good */
+  /* margin-top: 8px; REMOVED - margin-bottom on icon handles spacing */
+  font-size: 0.9em;
+  color: var(--color-text); /* Make text more visible */
+  font-weight: 500; /* Slightly bolder */
+}
+
+
+.record-waves {
+  position: absolute;
+  width: 150px; /* Increased size to be larger than button */
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: -1; /* Behind the button */
+}
+
+.wave {
+  fill: none;
+  stroke: var(--color-accent); /* Default wave color */
+  stroke-width: 2px;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.record-button.recording .wave {
+  stroke: var(--color-recording); /* Wave color when recording */
+}
+
+
+.record-button.recording .record-waves {
+    display: block !important;
+}
+
+.record-button.recording .wave1 {
+  animation: wave 2s infinite ease-out;
+}
+
+@keyframes wave {
+  0% { transform: scale(0.5) translate(-50%, -50%); opacity: 0.7; } /* Adjusted transform for absolute positioning */
+  100% { transform: scale(1.5) translate(-50%, -50%); opacity: 0; } /* Adjusted transform */
+}
+
+
+.transcription-display {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  min-height: 100px;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  border: 1px solid var(--color-border);
+}
+
+.transcription-display p {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+.transcription-display p:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* index.css */
+/* ... (keep all existing CSS from the previous response) ... */
+
+/* NEW STYLES for Image Upload */
+.image-upload-area {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Space between elements */
+  border: 1px solid var(--color-border);
+}
+
+.image-upload-label {
+  display: inline-flex; /* Use inline-flex for icon and text alignment */
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.9em;
+}
+
+.image-upload-label:hover {
+  background-color: #6c8edf;
+}
+
+.image-upload-label i {
+  margin-right: 8px; /* Space between icon and text in label */
+}
+
+.image-preview-container {
+  position: relative; /* For positioning the remove button */
+  border: 2px dashed var(--color-border);
+  padding: 5px;
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+#imagePreview {
+  display: block;
+  max-width: 100%;
+  max-height: 200px; /* Limit preview height */
+  border-radius: 4px;
+  object-fit: contain; /* Ensure image aspect ratio is maintained */
+}
+
+.remove-image-button {
+  position: absolute;
+  top: -10px; /* Position outside the top-right */
+  right: -10px;
+  background-color: var(--color-recording);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 22px; /* Adjust for vertical centering of '×' */
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.send-image-button {
+  padding: 8px 12px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.send-image-button:hover {
+  background-color: #45a049;
+}
+
+.send-image-button:disabled {
+  background-color: #555;
+  cursor: not-
+}
+
+.app-title {
+  font-size: 2em; /* Adjust size as needed */
+  font-weight: 600;
+  color: var(--color-text); /* Or var(--color-accent) if you prefer */
+  margin-bottom: 30px; /* Space below the title */
+  text-align: center;
+}
+
+/* Adjust app-container if needed to accommodate title */
+.app-container {
+  padding: 20px;
+  display: flex; /* Added to center title and main-content vertically */
+  flex-direction: column; /* Stack title above main-content */
+  align-items: center; /* Center children horizontally */
+}

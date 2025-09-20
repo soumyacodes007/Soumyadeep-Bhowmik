@@ -1,0 +1,21 @@
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true, // Important for Vite projects that handle bundling
+    "jsx": "preserve", // Or "react-jsx" if you were using React specific JSX transform
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    // "paths": { "@/*" :  ["./src/*"] } // Example if you have a src folder
+  },
+  "include": ["index.tsx"] // Or wherever your main TS/TSX file is
+}

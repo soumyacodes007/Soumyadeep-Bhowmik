@@ -1,0 +1,66 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Live Voice Assistant</title> <!-- This is the browser tab title -->
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.0.0",
+    "vite": "https://esm.sh/vite@^6.3.5"
+  }
+}
+</script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- ADDED TITLE HERE -->
+      <h1 class="app-title">Multimodal Live Chat - YeyuLab</h1>
+      <!-- END ADDED TITLE -->
+
+      <div class="main-content">
+        <div class="recording-interface">
+          <div class="status-indicator">
+            <span id="recordingStatus" class="status-text">Ready</span>
+          </div>
+          <div class="recording-controls">
+            <button id="recordButton" class="record-button" title="Start/Stop Talking">
+              <div class="record-button-content-wrapper">
+                <i id="micIcon" class="fas fa-microphone"></i>
+                <span id="recordText" class="record-text">Talk</span>
+              </div>
+              <svg class="record-waves" viewBox="0 0 100 100" style="display:none;">
+                <circle class="wave wave1" cx="50" cy="50" r="20" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="image-upload-area">
+            <label for="imageUpload" class="image-upload-label">
+              <i class="fas fa-image"></i> Upload Image
+            </label>
+            <input type="file" id="imageUpload" accept="image/png, image/jpeg, image/webp" style="display: none;">
+            <div id="imagePreviewContainer" class="image-preview-container" style="display: none;">
+              <img id="imagePreview" src="#" alt="Image preview" />
+              <button id="removeImageButton" class="remove-image-button" title="Remove Image">×</button>
+            </div>
+            <!-- The sendImageButton was removed for the periodic sending flow -->
+            <!-- <button id="sendImageButton" class="send-image-button" style="display: none;">Send Image</button> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script src="index.tsx" type="module"></script>
+  </body>
+</html>
